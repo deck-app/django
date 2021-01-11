@@ -1,5 +1,5 @@
 FROM python:3
-LEVEL Naba Das <nabad600@gmail.com>
+LABEL maintainer="Naba Kumar Das <nabad600@gmail.com>"
 ENV PYTHONUNBUFFERED=1
 WORKDIR /code
 COPY requirements.txt /code/
