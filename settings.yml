@@ -39,17 +39,17 @@ user:
   #   target:
   #     MYSQL_VERSION
 
-  customize_server_root_path:
-    label:
-      Server root
-    type:
-      input
-    values:
-      /code
-    hint:
-      Server document root
-    target:
-      DOCUMENT_ROOT
+  # customize_server_root_path:
+  #   label:
+  #     Server root
+  #   type:
+  #     input
+  #   values:
+  #     /code
+  #   hint:
+  #     Server document root
+  #   target:
+  #     DOCUMENT_ROOT
 
 #System defaults
 system:
