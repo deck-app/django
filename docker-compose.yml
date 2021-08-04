@@ -1,10 +1,10 @@
-version: "3"
+version: '3'
 services:
   django:
     image: deckapp/django:latest
-    command: "python manage.py runserver 0.0.0.0:8000"
+    command: 'python manage.py runserver 0.0.0.0:8000'
     volumes:
-      - "${APP_CODE_PATH_HOST}:/code"
+      - '${APP_CODE_PATH_HOST}:/code'
     ports:
-      - "${DJANGO_HOST_HTTP_PORT}:8000"
+      - '${DJANGO_HOST_HTTP_PORT}:8000'
 volumes: {}
