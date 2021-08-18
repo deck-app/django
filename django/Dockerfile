@@ -1,4 +1,4 @@
-FROM python:3
+FROM --platform=linux/x86_64 python:3
 LABEL MAINTAINER Naba Das <hello@get-deck.com>
 ENV PYTHONUNBUFFERED=1
 WORKDIR /code
