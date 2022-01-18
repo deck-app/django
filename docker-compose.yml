@@ -2,7 +2,7 @@ version: '3'
 services:
   django:
     build:
-      context: '.'
+      context: './django'
     command: 'python manage.py runserver 0.0.0.0:8000'
     volumes:
       - '${APP_CODE_PATH_HOST}:/code'
