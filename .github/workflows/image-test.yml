@@ -20,6 +20,7 @@ jobs:
         APP_CODE_PATH_HOST: /tmp/django
     - name: Demo prject Setup
       run:  |
+        docker exec django_django_1 ls -la /code
         docker exec django_django_1 git clone https://github.com/nabad600/django.git .
     - name: Web site test
       run:  |
