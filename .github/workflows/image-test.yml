@@ -20,10 +20,10 @@ jobs:
         APP_CODE_PATH_HOST: /tmp/django
     - name: Demo prject Setup
       run:  |
-        docker exec django_django_1 cd /code && git clone https://github.com/nabad600/django.git .
+        docker exec django_django_1 git clone https://github.com/nabad600/django.git .
     - name: Web site test
       run:  |
-        bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:35399)" != "200" ]]; do sleep 5; done'
+        bash -c 'if [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:35399)" != "200" ]]; done'
     - name: Destroy container and file
       run:  |
         docker-compose down
