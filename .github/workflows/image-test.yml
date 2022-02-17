@@ -21,10 +21,10 @@ jobs:
     - name: Demo prject Setup
       run:  |
         docker exec django_django_1 ls -la /code
-        docker exec django_django_1 git clone https://github.com/nabad600/django.git .
+        docker exec django_django_1 git clone https://github.com/nabad600/django.git 
     - name: Web site test
       run:  |
-        bash -c 'if [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:35399)" != "200" ]]; done'
+        bash -c 'if [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:35399/django/)" != "200" ]]; done'
     - name: Destroy container and file
       run:  |
         docker-compose down
