@@ -22,6 +22,7 @@ jobs:
       run:  |
         docker exec django_django_1 ls -la /code
         docker exec django_django_1 git clone https://github.com/nabad600/django.git 
+        docker exec django_django_1 cp /code/django/* /code/
     - name: Web site test
       run:  |
         curl -i http://localhost:35399/
