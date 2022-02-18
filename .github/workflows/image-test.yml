@@ -10,28 +10,23 @@ on:
 
 jobs:
 
-  Django-AMD64:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image Django
-      run: docker-compose -f "docker-compose.yml" up -d --build
-      env:
-        APP_CODE_PATH_HOST: /tmp/django
-    - name: Demo prject Setup
-      run:  |
-        docker exec django_django_1 ls -la /code
-        docker exec django_django_1 git clone https://github.com/nabad600/django.git 
-        docker exec django_django_1 cp /code/django/* /code/
-    - name: Web site test
-      run:  |
-        curl -i http://localhost:35399/
-    - name: Destroy container and file
-      run:  |
-        docker-compose down
-        echo "y" | docker image prune -a
-    - name: Deleted folder
-      run:  sudo rm -rf /tmp/django/
+  # Django-AMD64:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: Build the Docker image Django
+  #     run: docker-compose -f "docker-compose.yml" up -d --build
+  #     env:
+  #       APP_CODE_PATH_HOST: /tmp/django
+  #   - name: Web site test
+  #     run:  |
+  #       curl -i http://localhost:35399/
+  #   - name: Destroy container and file
+  #     run:  |
+  #       docker-compose down
+  #       echo "y" | docker image prune -a
+  #   - name: Deleted folder
+  #     run:  sudo rm -rf /tmp/django/
   Django-ARM64:
     runs-on: self-hosted
     steps:
@@ -40,11 +35,11 @@ jobs:
       run: docker-compose -f "docker-compose.yml" up -d --build
     - name: Web site test
       run:  |
-        bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:35399)" != "200" ]]; do sleep 5; done'
+        sh /home/ubuntu/script/curl-check.sh url "http://localhost:35399" stack-name "Django"
     - name: Destroy container and file
       run:  |
         docker-compose down
         echo "y" | docker image prune -a
-    # - name: Deleted folder
-    #   run:  sudo rm -rf /tmp/django/
+    - name: Deleted folder
+      run:  sudo rm -rf /tmp/django/
 
