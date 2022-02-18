@@ -45,6 +45,6 @@ jobs:
       run:  |
         docker-compose down
         echo "y" | docker image prune -a
-    - name: Deleted folder
-      run:  sudo rm -rf /tmp/django/
+    # - name: Deleted folder
+    #   run:  sudo rm -rf /tmp/django/
 
