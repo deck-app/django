@@ -24,7 +24,7 @@ jobs:
         docker exec django_django_1 git clone https://github.com/nabad600/django.git 
     - name: Web site test
       run:  |
-        curl -i http://localhost:35399/django/
+        curl -i http://localhost:35399/
     - name: Destroy container and file
       run:  |
         docker-compose down
