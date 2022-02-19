@@ -24,7 +24,7 @@ jobs:
         docker exec django_django_1 git clone https://github.com/nabad600/django.git 
     - name: Web site test
       run:  |
-        curl -i http://localhost:35399/django/
+        curl -i http://localhost:35399/
     - name: Destroy container and file
       run:  |
         docker-compose down
@@ -39,7 +39,8 @@ jobs:
       run: docker-compose -f "docker-compose.yml" up -d --build
     - name: Web site test
       run:  |
-        bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:35399)" != "200" ]]; do sleep 5; done'
+        curl -i http://localhost:35399
+        # bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:35399)" != "200" ]]; do sleep 5; done'
     - name: Destroy container and file
       run:  |
         docker-compose down
