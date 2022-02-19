@@ -36,6 +36,7 @@ jobs:
     - name: Web site test
       run:  |
         sh /home/ubuntu/script/curl-check.sh http://localhost Django
+        curl -i http://localhost
     - name: Destroy container and file
       run:  |
         docker-compose down
