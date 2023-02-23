@@ -6,7 +6,7 @@ services:
       args:
         - 'USER_ID=${USER_ID}'
         - 'GROUP_ID=${GROUP_ID}'
-    command: 'python manage.py runserver 0.0.0.0:8000'
+    command: '/usr/local/bin/autoreload python manage.py runserver 0.0.0.0:8000'
     volumes:
       - '${APP_CODE_PATH_HOST}:/code'
     ports:
