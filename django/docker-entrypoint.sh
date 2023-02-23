@@ -2,5 +2,5 @@
 
 cd /code
 git clone https://github.com/nabad600/django.git .
-chmod -R www-data:www-data /code
+chown -R www-data:www-data /code
 exec "$@"
