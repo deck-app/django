@@ -1,0 +1,77 @@
+name: Django 
+
+on:
+  schedule:
+  - cron:  '46 22 * * *'
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  Django-AMD64:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image Django
+      run: docker-compose -f "docker-compose.yml" up -d --build
+    - name: Web site test
+      run:  |
+        sh /home/ubuntu/script/curl-check.sh url "http://localhost:35399" stack-name "Django"
+        curl -i http://localhost:35399
+    - name: Destroy container and file
+      run:  |
+        docker-compose down
+        echo "y" | docker image prune -a
+        sudo rm -rf /tmp/django/
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_CHANNEL: github_action_status
+        SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
+        SLACK_ICON: https://github.com/rtCamp.png?size=48
+        SLACK_MESSAGE: 'Post Content Django AMD64 :rocket:'
+        SLACK_TITLE: Post Title
+        SLACK_USERNAME: rtCamp
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+  Django-ARM64:
+    runs-on: ubuntu-22.04
+    name: Django-ARM64
+    steps:
+    - uses: actions/checkout@v4
+    - uses: uraimo/run-on-arch-action@v2
+      name: Run commands
+      id: runcmd
+      with:
+        arch: aarch64
+        distro: ubuntu22.04
+        run: |
+          uname -a
+          echo ::set-output name=uname::$(uname -a)
+    - name: Get the output
+      run: |
+        echo "The uname output was ${{ steps.runcmd.outputs.uname }}"
+    - name: Build the Docker image Django
+      run: docker-compose -f "docker-compose.yml" up -d --build
+    - name: Web site test
+      run:  |
+        sh /home/ubuntu/script/curl-check.sh url "http://localhost:35399" stack-name "Django"
+        curl -i http://localhost:35399
+    - name: Destroy container and file
+      run:  |
+        docker-compose down
+        echo "y" | docker image prune -a
+        sudo rm -rf /tmp/django/
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_CHANNEL: github_action_status
+        SLACK_COLOR: ${{ job.status }}
+        SLACK_ICON: https://github.com/rtCamp.png?size=48
+        SLACK_MESSAGE: 'Post Content Django ARM64 :rocket:'
+        SLACK_TITLE: Post Title
+        SLACK_USERNAME: rtCamp
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+  
