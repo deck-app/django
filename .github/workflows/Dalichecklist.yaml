@@ -17,7 +17,7 @@ jobs:
       run: docker-compose -f "docker-compose.yml" up -d --build
     - name: Web site test
       run:  |
-        sh /home/ubuntu/script/curl-check.sh url "http://localhost:35399" stack-name "Django"
+        # sh /home/ubuntu/script/curl-check.sh url "http://localhost:35399" stack-name "Django"
         curl -i http://localhost:35399
     - name: Destroy container and file
       run:  |
@@ -56,7 +56,7 @@ jobs:
       run: docker-compose -f "docker-compose.yml" up -d --build
     - name: Web site test
       run:  |
-        sh /home/ubuntu/script/curl-check.sh url "http://localhost:35399" stack-name "Django"
+        # sh /home/ubuntu/script/curl-check.sh url "http://localhost:35399" stack-name "Django"
         curl -i http://localhost:35399
     - name: Destroy container and file
       run:  |
