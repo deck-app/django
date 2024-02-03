@@ -57,15 +57,9 @@ jobs:
                     "type": "button",
                     "text": {
                       "type": "plain_text",
-                      "text": ":grafana: Grafana dashboard"
+                      "text": ":grafana: Resolve Issue"
                       "value": "war",
-                      "confirm": {
-                        "title": "Are you sure?",
-                        "text": "Wouldn't you prefer a good game of chess?",
-                        "ok_text": "Yes",
-                        "dismiss_text": "No"
-                    }
-                    }
+                    },
                   }
                 ]
               }
