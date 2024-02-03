@@ -18,7 +18,7 @@ jobs:
     - name: Web site test
       run:  |
         # sh /home/ubuntu/script/curl-check.sh url "http://localhost:35399" stack-name "Django"
-        curl -i http://localhost:35399
+        #curl -i http://localhost:35399
     - name: Destroy container and file
       run:  |
         docker-compose down
@@ -28,7 +28,7 @@ jobs:
       id: slack
       uses: slackapi/slack-github-action@v1.24.0
       # https://api.slack.com/apps/<your-app-id>/incoming-webhooks
-      if: ${{ failure() }}
+      if: ${{ SUCCESS() }}
       with:
         channel-id: '#github_action_status' # slack channel #alerts-test
         payload: |
@@ -57,11 +57,9 @@ jobs:
                     "type": "button",
                     "text": {
                       "type": "plain_text",
-                      "text": ":grafana: Resolve Issue"
-                      "value": "war",
+                      "text": ":grafana: Grafana dashboard"
                     },
                     "url": "https://<your_organization>.grafana.net/d/my-app-dashboard?from=now-1h&to=now"
-                    "dismiss_text": "No"
                   }
                 ]
               }
