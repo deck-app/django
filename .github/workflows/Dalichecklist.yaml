@@ -19,11 +19,11 @@ jobs:
       run:  |
         # sh /home/ubuntu/script/curl-check.sh url "http://localhost:35399" stack-name "Django"
         #curl -i http://localhost:35399
-    - name: Destroy container and file
-      run:  |
-        docker-compose down
-        echo "y" | docker image prune -a
-        sudo rm -rf /tmp/django/
+    # - name: Destroy container and file
+    #   run:  |
+    #     docker-compose down
+    #     echo "y" | docker image prune -a
+    #     sudo rm -rf /tmp/django/
     - name: notify slack
       id: slack
       uses: slackapi/slack-github-action@v1.24.0
