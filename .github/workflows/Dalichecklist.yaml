@@ -49,7 +49,7 @@ jobs:
                     "type": "button",
                     "text": {
                       "type": "plain_text",
-                      "text": ":github: Failed action"
+                      "text": ":fire_engine: Failed action"
                     },
                     "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
                   },
