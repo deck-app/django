@@ -60,7 +60,7 @@ jobs:
                       "text": ":grafana: Resolve Issue"
                       "value": "war",
                     },
-                    "url": "#"
+                    "url": "https://<your_organization>.grafana.net/d/my-app-dashboard?from=now-1h&to=now"
                     "dismiss_text": "No"
                   }
                 ]
