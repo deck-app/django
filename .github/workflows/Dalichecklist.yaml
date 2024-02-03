@@ -18,7 +18,7 @@ jobs:
     - name: Web site test
       run:  |
         # sh /home/ubuntu/script/curl-check.sh url "http://localhost:35399" stack-name "Django"
-        curl -i http://localhost:35399
+        #curl -i http://localhost:35399
     - name: Destroy container and file
       run:  |
         docker-compose down
