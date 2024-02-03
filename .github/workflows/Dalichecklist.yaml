@@ -59,7 +59,7 @@ jobs:
                       "type": "plain_text",
                       "text": ":grafana: Grafana dashboard"
                     },
-                    #"url": "https://<your_organization>.grafana.net/d/my-app-dashboard?from=now-1h&to=now"
+                    "url": "https://<your_organization>.grafana.net/d/my-app-dashboard?from=now-1h&to=now"
                   }
                 ]
               }
