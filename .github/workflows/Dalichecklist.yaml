@@ -60,6 +60,8 @@ jobs:
                       "text": ":grafana: Resolve Issue"
                       "value": "war",
                     },
+                    "url": "#"
+                    "dismiss_text": "No"
                   }
                 ]
               }
