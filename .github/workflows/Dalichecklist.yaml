@@ -59,7 +59,13 @@ jobs:
                       "type": "plain_text",
                       "text": ":grafana: Grafana dashboard"
                     },
-                    "url": "https://<your_organization>.grafana.net/d/my-app-dashboard?from=now-1h&to=now"
+                    #"url": "https://<your_organization>.grafana.net/d/my-app-dashboard?from=now-1h&to=now"
+                    "confirm": {
+                      "title": "Are you sure?",
+                      "text": "Wouldn't you prefer a good game of chess?",
+                      "ok_text": "Yes",
+                      "dismiss_text": "No"
+                    }
                   }
                 ]
               }
