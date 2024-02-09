@@ -33,7 +33,7 @@ jobs:
         channel-id: '#github_action_status' # slack channel #alerts-test
         payload: |
           {
-            "text": "GitHub Action failed",
+            "text": ":fire: GitHub Action failed",
             "blocks": [
               {
                 "type": "section",
