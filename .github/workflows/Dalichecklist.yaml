@@ -59,7 +59,7 @@ jobs:
                       "type": "plain_text",
                       "text": ":grafana: Grafana dashboard"
                     },
-                    "url": "https://hooks.slack.com/services/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"
+                    "url": "https://slack.com/api/chat.delete"
                   }
                 ]
               }
