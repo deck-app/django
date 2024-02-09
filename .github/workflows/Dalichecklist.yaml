@@ -26,13 +26,45 @@ jobs:
     #     sudo rm -rf /tmp/django/
     - name: notify slack
       id: slack
-      uses: slack/webhook-action@v3
+      uses: slackapi/slack-github-action@v1.24.0
       # https://api.slack.com/apps/<your-app-id>/incoming-webhooks
       if: ${{ SUCCESS() }}
       with:
         channel-id: '#github_action_status' # slack channel #alerts-test
         payload: |
-          '{"text": "Hello! This is a notification from GitHub Actions.", "attachments": [{"text": "Choose an option:", "fallback": "You are unable to choose", "callback_id": "button_click", "color": "#3AA3E3", "attachment_type": "default", "actions": [{"name": "yes", "text": "Yes", "type": "button", "value": "yes"}, {"name": "no", "text": "No", "type": "button", "value": "no"}]}]}'
+          {
+            "text": "GitHub Action failed",
+            "blocks": [
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*Production deployment check failed* :fire_engine:\n High error rate detected after deployment! Rolling back..."
+                }
+              },
+              {
+                "type": "actions",
+                "elements": [
+                  {
+                    "type": "button",
+                    "text": {
+                      "type": "plain_text",
+                      "text": ":github: Failed action"
+                    },
+                    "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                  },
+                  {
+                    "type": "button",
+                    "text": {
+                      "type": "plain_text",
+                      "text": ":grafana: Grafana dashboard"
+                    },
+                    "url": "https://hooks.slack.com/services/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"
+                  }
+                ]
+              }
+            ]
+          }
       env:
-        webhook_url: ${{ secrets.SLACK_WEBHOOK_URL_FAIL }}
-        # SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_FAIL }}
+        SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
