@@ -1,8 +1,8 @@
 name: Django 
 
 on:
-  schedule:
-  - cron:  '46 22 * * *'
+#  schedule:
+  #- cron:  '46 22 * * *'
   push:
     branches: [ master ]
   pull_request:
